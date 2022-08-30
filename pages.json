@@ -1,29 +1,41 @@
 {
   "pages": [{
     "path": "pages/home/home",
-    "style": {
-      "navigationBarTitleText": "hi",
-      "enablePullDownRefresh": false
-    }
+    "style": {}
   }, {
     "path": "pages/cate/cate",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
+    "style": {}
   }, {
     "path": "pages/cart/cart",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
+    "style": {}
   }, {
     "path": "pages/my/my",
-    "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
-    }
+    "style": {}
   }],
+  "subPackages": [
+    {
+      "root": "subpkg",
+      "pages": [{
+                    "path" : "goods_detail/goods_detail",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "goods_list/goods_list",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
+    }
+  ],
   "globalStyle": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "李扇往来",
