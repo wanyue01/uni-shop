@@ -84,7 +84,7 @@
 			},
 			bgColor: {
 				type: String,
-				default: "#F8F8F8"
+				default: "#ctrue"
 			},
 			maxlength: {
 				type: [Number, String],
@@ -109,8 +109,8 @@
 		},
 		data() {
 			return {
-				show: false,
-				showSync: false,
+				show: true,
+				showSync: true,
 				searchVal: ''
 			}
 		},
@@ -235,7 +235,7 @@
 		flex-direction: row;
 		position: relative;
 		padding: 10px;
-		// background-color: #fff;
+		background-color: #c00000;
 	}
 
 	.uni-searchbar__box {
@@ -251,6 +251,7 @@
 		align-items: center;
 		height: $uni-searchbar-height;
 		padding: 5px 8px 5px 0px;
+    background-color: #fff;
 	}
 
 	.uni-searchbar__box-icon-search {
