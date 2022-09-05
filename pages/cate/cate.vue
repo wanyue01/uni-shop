@@ -3,13 +3,13 @@
     <my-search @click="gotoSearch"></my-search>
     <view class="scroll-view-container">
     <!-- 左侧滑动区域 -->
-    <scroll-view scroll-y="true" class="left-scroll-view" :style="{height: wh}">
+    <scroll-view scroll-y="true" class="left-scroll-view" :style="{height: wh + 'px'}">
       <block v-for="(item, i) in cateList" :key="i">
         <view :class="['left-scroll-view-item', active === i ? 'active' : '']" @click="activeChange(i)">{{item.cat_name}}</view>
       </block>
     </scroll-view>
     <!-- 右侧滑动区域 -->
-    <scroll-view scroll-y="true" :style="{height: wh}" :scroll-top="scrollTop">
+    <scroll-view scroll-y="true" :style="{height: wh + 'px'}" :scroll-top="scrollTop">
       <view class="cate-lv2" v-for="(item2, i2) in cateLevel2" :key="i2">
         <view class="cate-lv2-title">/ {{item2.cat_name}} /</view>
         <view class="cate-lv3-list">
@@ -25,7 +25,9 @@
 </template>
 
 <script>
+  import badgeMix from '@/mixins/tabbar-badge.js'
   export default {
+    mixins: [badgeMix],
     data() {
       return {
         // 设备可用高度

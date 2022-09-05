@@ -34,7 +34,26 @@
 </template>
 
 <script>
+  // import { mapState, mapMutations, mapGetters, mapActions } from 'vuex'
+  import { mapState, mapGetters, mapActions } from 'vuex'
   export default {
+    // 当 一个值 依赖于其他变量时用computed
+    computed: {
+      ...mapState('m_cart', []),
+      ...mapGetters('m_cart', ['total'])
+    },
+    // 当一个值改变，想引起 另一个值 的变化时，用watch
+    watch: {
+      total: {
+       handler(newVal) {
+         const findResult = this.options.find(x => x.text === '购物车')
+         if (findResult) {
+           findResult.info = newVal
+         }
+       },
+       immediate: true
+      }
+    },
     data() {
       return {
         goods_info: [],
@@ -46,7 +65,7 @@
         		}, {
         			icon: 'cart',
         			text: '购物车',
-        			info: 2
+        			info: 0
         		}],
         	    buttonGroup: [{
         	      text: '加入购物车',
@@ -66,6 +85,8 @@
       this.getGoodsDetail(goods_id)
     },
     methods: {
+      // ...mapMutations('m_cart', ['addToCart']),
+      ...mapActions('m_cart', ['addToCart']),
       async getGoodsDetail(goods_id) {
         const {data: res} = await uni.$http.get('/api/public/v1/goods/detail', {goods_id})
         if (res.meta.status !== 200) return uni.$showMessage()
@@ -86,6 +107,20 @@
           uni.switchTab({
             url: '/pages/cart/cart'
           })
+        }
+      },
+      buttonClick(e) {
+        if (e.content.text === '加入购物车') {
+          const {goods_id, goods_name, goods_price, goods_small_logo} = this.goods_info
+          const goods = {
+            goods_id,
+            goods_name,
+            goods_price,
+            goods_count: 1,
+            goods_small_logo,
+            goods_state: true
+          }
+          this.addToCart(goods)
         }
       }
     }

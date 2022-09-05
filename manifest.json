@@ -53,9 +53,14 @@
         "appid" : "wx7653021e4c58cbde",
         "setting" : {
             "urlCheck" : false,
-            "checkSiteMap": false
+            "checkSiteMap" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission": {
+          "scope.address": {
+                "desc": "请求获取你的地址以便提供进一步的服务"
+              }
+        }
     },
     "vueVersion" : "2"
 }
