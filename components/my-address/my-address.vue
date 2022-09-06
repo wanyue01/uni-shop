@@ -43,10 +43,11 @@
     methods: {
       ...mapMutations('m_user', ['updateAddress']),
       async chooseAddress() {
-        console.log(this)
         // 1.调用小程序提供的chooseAddress() 方法，即可使用收货地址
         //   返回值时一个数组，第一项为错误对象，第二项为成功之后的收货地址
         const [err, succ] = await uni.chooseAddress().catch(e => e)
+        console.log(err)
+        console.log(succ)
         
         // 2.用户成功选择了收货地址
         if (err === null && succ.errMsg === 'chooseAddress:ok') {
@@ -76,12 +77,6 @@
             uni.$showMessage('您取消了授权！')
           }
       })
-        // uni.openSetting({
-        //   success(settingResult) {
-        //     if (!settingResult.authSetting['scope.address']) return uni.$showMessage('您取消了授权！')
-        //     if (settingResult.authSetting['scope.address']) return uni.$showMessage('授权成功！请选择收货地址')
-        //   }
-        // })
       }
     }
   }
